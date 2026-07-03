@@ -1,0 +1,47 @@
+﻿<Page x:Class="StudyOnlineBD.View.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StudyOnlineBD.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MainPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" HorizontalAlignment="Left" Margin="20">
+            <Button x:Name="MyCoursesButton" Click="MyCoursesButton_Click"
+                    Content="Мои курсы" Background="LightSkyBlue"></Button>
+            <Button x:Name="AllCoursesButton" Click="AllCoursesButton_Click"
+                    Content="Все курсы" Background="LightSkyBlue"></Button>
+            <!--<Image Source="\Asseta\img\edit.png"/>-->
+        </StackPanel>
+        <ListView Grid.Row="1" Name="CourseListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"></WrapPanel>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border CornerRadius="5" Padding="5" Background="LightSkyBlue">
+                        <StackPanel Height="80" Orientation="Horizontal">
+                            <TextBlock Text="{Binding CourseName}" Width="170" FontSize="18"
+                                       VerticalAlignment="Center" TextWrapping="Wrap"/>
+                            <StackPanel x:Name="DelEditStack" Margin="17 5 0 0" VerticalAlignment="Top" Orientation="Horizontal">
+                                <Image x:Name="DelteImage" Source="../Assets/Images/delete.png" Width="18"
+                                       Cursor="Hand" MouseLeftButtonDown="DelteImage_MouseLeftButtonDown"/>
+                                <Image x:Name="EditImage" Source="../Assets/Images/edit.png" Width="18" Margin="5 0 0 0" 
+                                       Cursor="Hand" MouseLeftButtonDown="EditImage_MouseLeftButtonDown"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>
